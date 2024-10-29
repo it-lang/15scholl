@@ -1,327 +1,810 @@
 <!DOCTYPE html>
-<html lang="kk">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Білім сапасы</title>
+    <title>Таблица данных</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
-            margin: 0;
-            color: #333;
-        }
-
-        h1 {
-            text-align: center;
-            color: #4a90e2;
-        }
-
-        h2 {
-            color: #333;
-        }
-
-        .auth-panel {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .admin-panel {
-            display: none;
-            margin-top: 20px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
+        /* Общие стили для таблицы */
+        
         table {
             width: 100%;
+            /* Занять всю ширину контейнера */
             border-collapse: collapse;
-            margin-top: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Убрать двойные границы между ячейками */
+            margin: 20px 0;
+            /* Отступы сверху и снизу */
+            font-family: 'Arial', sans-serif;
+            /* Шрифт */
         }
-
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-
+        /* Стили для заголовков таблицы */
+        
         th {
-            background-color: #4a90e2;
+            background: linear-gradient(90deg, #ff6f61, #ff8c00);
+            /* Градиентный фон */
             color: white;
-            cursor: pointer;
+            /* Цвет текста */
+            padding: 15px;
+            /* Внутренний отступ */
+            text-align: left;
+            /* Выравнивание текста по левому краю */
+            font-size: 1.2em;
+            /* Увеличенный размер шрифта */
+            border-bottom: 2px solid #ff8c00;
+            /* Рамка снизу */
         }
-
-        th:hover {
-            background-color: #357ab8;
-        }
-
+        /* Стили для ячеек таблицы */
+        
         td {
-            transition: background-color 0.3s;
-        }
-
-        td:hover {
-            background-color: #f1f1f1;
-        }
-
-        input[type="text"],
-        input[type="number"],
-        input[type="password"] {
+            border: 1px solid #dddddd;
+            /* Рамка вокруг ячеек */
             padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            width: calc(100% - 22px);
+            /* Внутренний отступ */
+            transition: background-color 0.3s;
+            /* Плавный переход для фона */
         }
-
-        button {
-            background-color: #4a90e2;
+        /* Чередование цвета строк для улучшения читаемости */
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+            /* Светлый цвет для четных строк */
+        }
+        /* Выделение строки при наведении */
+        
+        tr:hover {
+            background-color: #ffeb3b;
+            /* Яркий цвет при наведении на строку */
+        }
+        /* Стили для последней строки (итоговой) */
+        
+        tr:last-child {
+            font-weight: bold;
+            /* Жирный шрифт для последней строки */
+            background-color: #4caf50;
+            /* Зелёный цвет для последней строки */
             color: white;
+            /* Белый цвет текста */
+        }
+        /* Стили для ячеек итоговой строки */
+        
+        tr:last-child td {
+            border: 2px solid #388e3c;
+            /* Более выраженная рамка для итоговой строки */
+        }
+        /* Стили для кнопок редактирования */
+        
+        .edit-button {
+            background-color: #4caf50;
+            /* Зеленый фон для кнопки */
+            color: white;
+            /* Белый текст */
             border: none;
+            /* Убрать рамку */
             padding: 10px 15px;
-            border-radius: 4px;
+            /* Внутренний отступ */
+            text-align: center;
+            /* Выравнивание текста по центру */
+            text-decoration: none;
+            /* Убрать подчеркивание */
+            display: inline-block;
+            /* Отображение в строку */
+            margin: 4px 2px;
+            /* Отступы вокруг кнопки */
             cursor: pointer;
-            margin: 5px 0;
+            /* Указатель при наведении */
+            border-radius: 5px;
+            /* Закругленные углы */
             transition: background-color 0.3s;
-            width: 100%;
+            /* Плавный переход для фона */
         }
-
-        button:hover {
-            background-color: #357ab8;
+        /* Эффект при наведении на кнопку */
+        
+        .edit-button:hover {
+            background-color: #45a049;
+            /* Темнее при наведении */
         }
-
-        #search-input {
-            width: calc(100% - 22px);
+        /* Стили для области редактирования */
+        
+        .admin-area {
+            background-color: #f1f1f1;
+            /* Светлый фон для области редактирования */
+            border: 2px dashed #ff8c00;
+            /* Пунктирная рамка */
+            padding: 20px;
+            /* Внутренний отступ */
+            margin: 20px 0;
+            /* Отступ сверху и снизу */
+            border-radius: 10px;
+            /* Закругленные углы */
+        }
+        /* Стили для предупреждений и сообщений */
+        
+        .admin-message {
+            background-color: #ffeb3b;
+            /* Ярко-желтый фон */
+            color: #333;
+            /* Темный текст */
             padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            margin-top: 10px;
+            /* Внутренний отступ */
+            border-radius: 5px;
+            /* Закругленные углы */
+            margin-bottom: 20px;
+            /* Отступ снизу */
         }
-
-        .button-group {
-            display: flex;
-            flex-direction: column;
+        /* Стили для инпутов (полей ввода) */
+        
+        .admin-input {
+            width: 100%;
+            /* Занять всю ширину */
+            padding: 10px;
+            /* Внутренний отступ */
+            margin: 5px 0;
+            /* Отступы сверху и снизу */
+            border: 1px solid #ccc;
+            /* Рамка */
+            border-radius: 5px;
+            /* Закругленные углы */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Легкая тень */
+        }
+        /* Стили для кнопки сохранения */
+        
+        .save-button {
+            background-color: #2196F3;
+            /* Синий фон для кнопки */
+            color: white;
+            /* Белый текст */
+            padding: 10px 15px;
+            /* Внутренний отступ */
+            border: none;
+            /* Убрать рамку */
+            border-radius: 5px;
+            /* Закругленные углы */
+            cursor: pointer;
+            /* Указатель при наведении */
+            transition: background-color 0.3s;
+            /* Плавный переход для фона */
+        }
+        /* Эффект при наведении на кнопку сохранения */
+        
+        .save-button:hover {
+            background-color: #1e88e5;
+            /* Темнее при наведении */
+        }
+        /* Стили для кнопки Войти как администратор */
+        
+        #login-button {
+            background-color: #4caf50;
+            /* Зеленый фон */
+            color: white;
+            /* Белый текст */
+            border: none;
+            /* Убрать рамку */
+            padding: 10px 20px;
+            /* Внутренний отступ */
+            text-align: center;
+            /* Выравнивание текста по центру */
+            text-decoration: none;
+            /* Убрать подчеркивание */
+            display: inline-block;
+            /* Отображение в строку */
+            margin: 10px 0;
+            /* Отступы сверху и снизу */
+            cursor: pointer;
+            /* Указатель при наведении */
+            border-radius: 5px;
+            /* Закругленные углы */
+            transition: background-color 0.3s, transform 0.2s;
+            /* Плавный переход для фона и эффект масштабирования */
+        }
+        /* Эффект при наведении на кнопку Войти */
+        
+        #login-button:hover {
+            background-color: #45a049;
+            /* Темнее при наведении */
+            transform: scale(1.05);
+            /* Увеличение при наведении */
+        }
+        /* Стили для кнопки Выйти */
+        
+        #logout-button {
+            background-color: #f44336;
+            /* Красный фон */
+            color: white;
+            /* Белый текст */
+            border: none;
+            /* Убрать рамку */
+            padding: 10px 20px;
+            /* Внутренний отступ */
+            text-align: center;
+            /* Выравнивание текста по центру */
+            text-decoration: none;
+            /* Убрать подчеркивание */
+            display: inline-block;
+            /* Отображение в строку */
+            margin: 10px 0;
+            /* Отступы сверху и снизу */
+            cursor: pointer;
+            /* Указатель при наведении */
+            border-radius: 5px;
+            /* Закругленные углы */
+            transition: background-color 0.3s, transform 0.2s;
+            /* Плавный переход для фона и эффект масштабирования */
+        }
+        /* Эффект при наведении на кнопку Выйти */
+        
+        #login-button:hover,
+        #logout-button:hover,
+        .edit-button:hover,
+        #add-button:hover {
+            background-color: #45a049;
+            /* Темнее при наведении */
+        }
+        
+        .hidden {
+            display: none;
+            /* Скрытие элемента */
+        }
+        /* Стили для формы */
+        
+        .form-container {
+            margin: 20px 0;
+            /* Отступ сверху и снизу */
+            display: none;
+            /* Скрыть форму по умолчанию */
+        }
+        
+        .form-container input {
+            padding: 10px;
+            /* Внутренний отступ */
+            margin-right: 10px;
+            /* Отступ между полями */
+            border: 1px solid #ddd;
+            /* Рамка */
+            border-radius: 5px;
+            /* Закругленные углы */
         }
     </style>
 </head>
 
+<h1>Раздел администраторов</h1>
+
+<!-- Форма для добавления новых элементов -->
+<div class="form-container" id="form-container">
+    <h2>Добавить новый элемент</h2>
+    <input type="text" id="class-input" placeholder="Класс">
+    <input type="number" id="total-input" placeholder="Всего">
+    <input type="number" id="absences-input" placeholder="Пропуски">
+    <input type="number" id="other1-input" placeholder="Другое 1">
+    <input type="number" id="other2-input" placeholder="Другое 2">
+    <input type="number" id="other3-input" placeholder="Другое 3">
+    <input type="number" id="other4-input" placeholder="Другое 4">
+    <input type="number" id="other5-input" placeholder="Другое 5">
+    <input type="number" id="percent-input" placeholder="Процент">
+    <button id="add-button">Добавить</button>
+</div>
+
 <body>
-    <h1>Жанар Ахметова: 2-11 сыныптардың білім сапасы</h1>
 
-    <div class="auth-panel">
-        <input type="password" id="admin-password" placeholder="Пароль администратора">
-        <button id="login-button">Кіру</button>
-        <button id="logout-button" style="display:none;">Шығу</button>
+    <button id="login-button">Войти как администратор</button>
+    <button id="logout-button" style="display: none;">Выйти</button>
+
+    <div id="admin-panel">
+        <input type="password" id="admin-password" placeholder="Введите пароль">
+        <button id="save-edit-button" style="display: none;">Сохранить изменения</button>
     </div>
 
-    <div class="admin-panel">
-        <h2>Қосымша ақпарат енгізу</h2>
-        <div class="button-group">
-            <input type="text" id="class" placeholder="Сынып" required>
-            <input type="number" id="total" placeholder="Барлығы" required>
-            <input type="number" id="excellent" placeholder="Оқу озаттары" required>
-            <input type="number" id="active" placeholder="Оқу екпінділері" required>
-            <input type="number" id="three" placeholder="Үшке оқитындар" required>
-            <input type="number" id="failing" placeholder="Үлгермейтіндер" required>
-            <input type="number" id="not_passed" placeholder="Аттестациядан өтпегендер" required>
-            <input type="number" id="quality" placeholder="Білім сапасы %" required>
-            <button id="add-button">Қосу</button>
-            <button id="reset-button">Деректерді қалпына келтіру</button>
-            <button id="report-button">Есеп беру</button>
-            <button id="export-button">CSV форматына экспорттау</button>
-            <button id="clear-filter-button">Фильтрді тазарту</button>
-        </div>
-    </div>
-
-    <table id="data-table">
+    <table>
         <thead>
             <tr>
-                <th onclick="sortTable('class')">Сынып</th>
-                <th onclick="sortTable('total')">Барлығы</th>
-                <th onclick="sortTable('excellent')">Оқу озаттары</th>
-                <th onclick="sortTable('active')">Оқу екпінділері</th>
-                <th onclick="sortTable('three')">Үшке оқитындар</th>
-                <th onclick="sortTable('failing')">Үлгермейтіндер</th>
-                <th onclick="sortTable('not_passed')">Аттестациядан өтпегендер</th>
-                <th onclick="sortTable('quality')">Білім сапасы %</th>
-                <th>Әрекет</th>
+                <th>Класс</th>
+                <th>Общее количество</th>
+                <th>Пропущенные</th>
+                <th>Невыполнимые</th>
+                <th>Решенные</th>
+                <th>Прочие 1</th>
+                <th>Прочие 2</th>
+                <th>Прочие 3</th>
+                <th>Процент</th>
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td>2а</td>
+                <td>19</td>
+                <td>6</td>
+                <td>4</td>
+                <td>9</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>52.63</td>
+            </tr>
+            <tr>
+                <td>2ә</td>
+                <td>22</td>
+                <td>7</td>
+                <td>8</td>
+                <td>7</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>68.18</td>
+            </tr>
+            <tr>
+                <td>2б</td>
+                <td>20</td>
+                <td>4</td>
+                <td>9</td>
+                <td>7</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>65</td>
+            </tr>
+            <tr>
+                <td>3а</td>
+                <td>27</td>
+                <td>6</td>
+                <td>12</td>
+                <td>9</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>66.67</td>
+            </tr>
+            <tr>
+                <td>3ә</td>
+                <td>24</td>
+                <td>4</td>
+                <td>11</td>
+                <td>9</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>62.5</td>
+            </tr>
+            <tr>
+                <td>3б</td>
+                <td>27</td>
+                <td>3</td>
+                <td>15</td>
+                <td>9</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>66.67</td>
+            </tr>
+            <tr>
+                <td>3 Сыныптар</td>
+                <td>78</td>
+                <td>13</td>
+                <td>38</td>
+                <td>27</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>65.38</td>
+            </tr>
+            <tr>
+                <td>4а</td>
+                <td>24</td>
+                <td>3</td>
+                <td>12</td>
+                <td>9</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>62.5</td>
+            </tr>
+            <tr>
+                <td>4ә</td>
+                <td>25</td>
+                <td>4</td>
+                <td>10</td>
+                <td>11</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>56</td>
+            </tr>
+            <tr>
+                <td>4б</td>
+                <td>24</td>
+                <td>4</td>
+                <td>12</td>
+                <td>8</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+                <td>66.67</td>
+            </tr>
+            <tr>
+                <td>4 Сыныптар</td>
+                <td>73</td>
+                <td>11</td>
+                <td>34</td>
+                <td>28</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+                <td>61.64</td>
+            </tr>
+            <tr>
+                <td>1 – 4 Сыныптар</td>
+                <td>212</td>
+                <td>41</td>
+                <td>93</td>
+                <td>78</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+                <td>63.21</td>
+            </tr>
+            <tr>
+                <td>5а</td>
+                <td>25</td>
+                <td>0</td>
+                <td>10</td>
+                <td>15</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>40</td>
+            </tr>
+            <tr>
+                <td>5ә</td>
+                <td>23</td>
+                <td>2</td>
+                <td>9</td>
+                <td>12</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>47.83</td>
+            </tr>
+            <tr>
+                <td>5б</td>
+                <td>25</td>
+                <td>3</td>
+                <td>14</td>
+                <td>8</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>68</td>
+            </tr>
+            <tr>
+                <td>5 Сыныптар</td>
+                <td>73</td>
+                <td>5</td>
+                <td>33</td>
+                <td>35</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>52.05</td>
+            </tr>
+            <tr>
+                <td>6а</td>
+                <td>22</td>
+                <td>2</td>
+                <td>11</td>
+                <td>9</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>59.09</td>
+            </tr>
+            <tr>
+                <td>6ә</td>
+                <td>21</td>
+                <td>3</td>
+                <td>9</td>
+                <td>9</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>57.14</td>
+            </tr>
+            <tr>
+                <td>6б</td>
+                <td>19</td>
+                <td>2</td>
+                <td>6</td>
+                <td>11</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+                <td>42.11</td>
+            </tr>
+            <tr>
+                <td>6 Сыныптар</td>
+                <td>62</td>
+                <td>7</td>
+                <td>26</td>
+                <td>29</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+                <td>53.23</td>
+            </tr>
+            <tr>
+                <td>7а</td>
+                <td>24</td>
+                <td>0</td>
+                <td>13</td>
+                <td>11</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>54.17</td>
+            </tr>
+            <tr>
+                <td>7ә</td>
+                <td>25</td>
+                <td>1</td>
+                <td>13</td>
+                <td>11</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>56</td>
+            </tr>
+            <tr>
+                <td>7б</td>
+                <td>25</td>
+                <td>3</td>
+                <td>13</td>
+                <td>9</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>64</td>
+            </tr>
+            <tr>
+                <td>7 Сыныптар</td>
+                <td>74</td>
+                <td>4</td>
+                <td>39</td>
+                <td>31</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>58.11</td>
+            </tr>
+            <tr>
+                <td>8а</td>
+                <td>24</td>
+                <td>2</td>
+                <td>11</td>
+                <td>11</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>54.17</td>
+            </tr>
+            <tr>
+                <td>8ә</td>
+                <td>18</td>
+                <td>0</td>
+                <td>8</td>
+                <td>10</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>44.44</td>
+            </tr>
+            <tr>
+                <td>8б</td>
+                <td>23</td>
+                <td>2</td>
+                <td>11</td>
+                <td>10</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>56.52</td>
+            </tr>
+            <tr>
+                <td>8 Сыныптар</td>
+                <td>65</td>
+                <td>4</td>
+                <td>30</td>
+                <td>31</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>52.31</td>
+            </tr>
+            <tr>
+                <td>9а</td>
+                <td>25</td>
+                <td>3</td>
+                <td>10</td>
+                <td>12</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>52</td>
+            </tr>
+            <tr>
+                <td>9ә</td>
+                <td>25</td>
+                <td>0</td>
+                <td>8</td>
+                <td>17</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>32</td>
+            </tr>
+            <tr>
+                <td>9 Сыныптар</td>
+                <td>50</td>
+                <td>3</td>
+                <td>18</td>
+                <td>29</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>42</td>
+            </tr>
+            <tr>
+                <td>5 – 9 Сыныптар</td>
+                <td>324</td>
+                <td>23</td>
+                <td>146</td>
+                <td>155</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+                <td>52.16</td>
+            </tr>
+            <tr>
+                <td>10а</td>
+                <td>24</td>
+                <td>1</td>
+                <td>11</td>
+                <td>12</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>10ә</td>
+                <td>23</td>
+                <td>2</td>
+                <td>9</td>
+                <td>12</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>60.87</td>
+            </tr>
+            <tr>
+                <td>10б</td>
+                <td>25</td>
+                <td>2</td>
+                <td>11</td>
+                <td>12</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>52</td>
+            </tr>
+            <tr>
+                <td>10 Сыныптар</td>
+                <td>72</td>
+                <td>5</td>
+                <td>31</td>
+                <td>36</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>53.57</td>
+            </tr>
+            <tr>
+                <td>11а</td>
+                <td>25</td>
+                <td>1</td>
+                <td>12</td>
+                <td>12</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>11ә</td>
+                <td>23</td>
+                <td>3</td>
+                <td>9</td>
+                <td>11</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>56.52</td>
+            </tr>
+            <tr>
+                <td>11б</td>
+                <td>25</td>
+                <td>3</td>
+                <td>12</td>
+                <td>10</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>60</td>
+            </tr>
+            <tr>
+                <td>11 Сыныптар</td>
+                <td>73</td>
+                <td>7</td>
+                <td>33</td>
+                <td>33</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>58.90</td>
+            </tr>
+            <tr>
+                <td>2 – 11 Сыныптар</td>
+                <td>459</td>
+                <td>51</td>
+                <td>192</td>
+                <td>203</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+                <td>55.60</td>
+            </tr>
         </tbody>
     </table>
 
-    <input type="text" id="search-input" placeholder="Сынып іздеу">
-
     <script>
-        const dataTable = document.getElementById('data-table').getElementsByTagName('tbody')[0];
-        const addButton = document.getElementById('add-button');
         const loginButton = document.getElementById('login-button');
         const logoutButton = document.getElementById('logout-button');
-        const adminPanel = document.querySelector('.admin-panel');
+        const adminPanel = document.getElementById('admin-panel');
         const adminPasswordInput = document.getElementById('admin-password');
-        const searchInput = document.getElementById('search-input');
-        const resetButton = document.getElementById('reset-button');
-        const reportButton = document.getElementById('report-button');
-        const exportButton = document.getElementById('export-button');
-        const clearFilterButton = document.getElementById('clear-filter-button');
+        const saveEditButton = document.getElementById('save-edit-button');
+        let currentEditRow = null;
 
-        // Шаблон данных, загружаемый из localStorage или инициализируемый значениями по умолчанию
-        let data = JSON.parse(localStorage.getItem('educationData')) || [
-            { class: '2а', total: 19, excellent: 6, active: 4, three: 9, failing: 0, not_passed: 0, quality: 52.63 },
-            { class: '2ә', total: 22, excellent: 7, active: 8, three: 7, failing: 0, not_passed: 0, quality: 68.18 },
-            // Добавьте больше данных...
-        ];
-
-        // Рендеринг таблицы
+        // Рендеринг таблицы с обработчиками событий
         function renderTable() {
-            dataTable.innerHTML = '';
-            data.forEach((row, index) => {
-                const newRow = dataTable.insertRow();
-                Object.values(row).forEach((text) => {
-                    const newCell = newRow.insertCell();
-                    newCell.textContent = text;
-                });
-                const actionCell = newRow.insertCell();
-                actionCell.innerHTML = `
-                    <button onclick="editRow(${index})">Редактировать</button>
-                    <button onclick="deleteRow(${index})">Жою</button>`;
+            const rows = document.querySelectorAll('tbody tr');
+            rows.forEach((row, index) => {
+                row.onclick = () => editRow(index);
             });
         }
 
-        // Добавление новой строки
-        function addRow() {
-            const newRow = {
-                class: document.getElementById('class').value,
-                total: parseInt(document.getElementById('total').value),
-                excellent: parseInt(document.getElementById('excellent').value),
-                active: parseInt(document.getElementById('active').value),
-                three: parseInt(document.getElementById('three').value),
-                failing: parseInt(document.getElementById('failing').value),
-                not_passed: parseInt(document.getElementById('not_passed').value),
-                quality: parseFloat(document.getElementById('quality').value),
-            };
-
-            if (validateRow(newRow)) {
-                data.push(newRow);
-                saveData(); // Сохраняем данные
-                renderTable();
-                clearInputs(); // Очищаем поля ввода после добавления
-            } else {
-                alert('Некоторые поля неверны. Проверьте ввод!');
-            }
-        }
-
-        // Удаление строки
-        function deleteRow(index) {
-            data.splice(index, 1);
-            saveData(); // Сохраняем данные
-            renderTable();
-        }
-
-        // Редактирование строки
+        // Редактирование выбранной строки
         function editRow(index) {
-            const row = data[index];
-            document.getElementById('class').value = row.class;
-            document.getElementById('total').value = row.total;
-            document.getElementById('excellent').value = row.excellent;
-            document.getElementById('active').value = row.active;
-            document.getElementById('three').value = row.three;
-            document.getElementById('failing').value = row.failing;
-            document.getElementById('not_passed').value = row.not_passed;
-            document.getElementById('quality').value = row.quality;
+            currentEditRow = index;
+            const cells = document.querySelectorAll('tbody tr')[index].children;
 
-            // Удаляем строку после редактирования
-            deleteRow(index);
-        }
-
-        // Валидация данных
-        function validateRow(row) {
-            return row.class && row.total >= 0 && row.excellent >= 0 && row.active >= 0 &&
-                row.three >= 0 && row.failing >= 0 && row.not_passed >= 0 && row.quality >= 0;
-        }
-
-        // Очищаем поля ввода после добавления
-        function clearInputs() {
-            document.getElementById('class').value = '';
-            document.getElementById('total').value = '';
-            document.getElementById('excellent').value = '';
-            document.getElementById('active').value = '';
-            document.getElementById('three').value = '';
-            document.getElementById('failing').value = '';
-            document.getElementById('not_passed').value = '';
-            document.getElementById('quality').value = '';
-        }
-
-        // Сохранение данных в localStorage
-        function saveData() {
-            localStorage.setItem('educationData', JSON.stringify(data));
-        }
-
-        // Генерация отчета о качестве образования
-        reportButton.addEventListener('click', () => {
-            let report = "Отчет о качестве образования:\n\n";
-            data.forEach(row => {
-                report += `Класс: ${row.class}, Качество: ${row.quality}%\n`;
-            });
-            alert(report);
-        });
-
-        // Экспорт данных в CSV
-        exportButton.addEventListener('click', () => {
-            const csvRows = [];
-            const headers = Object.keys(data[0]);
-            csvRows.push(headers.join(','));
-
-            for (const row of data) {
-                csvRows.push(Object.values(row).join(','));
+            // Заполнение полей ввода данными выбранной строки
+            for (let i = 0; i < cells.length; i++) {
+                const input = document.createElement('input');
+                input.value = cells[i].innerText;
+                cells[i].innerHTML = ''; // Очищаем ячейку
+                cells[i].appendChild(input); // Вставляем поле ввода
             }
+            saveEditButton.style.display = 'inline-block'; // Показываем кнопку сохранения
+        }
 
-            const csvString = csvRows.join('\n');
-            const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.setAttribute('href', url);
-            a.setAttribute('download', 'education_data.csv');
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        });
-
-        // Очистка фильтра поиска
-        clearFilterButton.addEventListener('click', () => {
-            searchInput.value = '';
-            renderTable();
-        });
-
-        // Фильтрация таблицы по классу
-        searchInput.addEventListener('input', () => {
-            const searchTerm = searchInput.value.toLowerCase();
-            const filteredData = data.filter(row => row.class.toLowerCase().includes(searchTerm));
-            dataTable.innerHTML = '';
-            filteredData.forEach((row, index) => {
-                const newRow = dataTable.insertRow();
-                Object.values(row).forEach((text) => {
-                    const newCell = newRow.insertCell();
-                    newCell.textContent = text;
-                });
-                const actionCell = newRow.insertCell();
-                actionCell.innerHTML = `
-                    <button onclick="editRow(${index})">Редактировать</button>
-                    <button onclick="deleteRow(${index})">Жою</button>`;
-            });
-        });
-
-        // Событие добавления строки
-        addButton.addEventListener('click', addRow);
+        // Сохранение изменений в текущей строке
+        function saveEdit() {
+            const cells = document.querySelectorAll('tbody tr')[currentEditRow].children;
+            const inputs = Array.from(cells).map(cell => cell.firstChild); // Получаем поля ввода
+            for (let i = 0; i < cells.length; i++) {
+                cells[i].innerHTML = inputs[i].value; // Сохраняем значение из поля ввода
+            }
+            saveEditButton.style.display = 'none'; // Скрываем кнопку после сохранения
+            currentEditRow = null; // Сбрасываем текущую строку
+        }
 
         // Выход из админ-панели
         logoutButton.addEventListener('click', () => {
@@ -343,11 +826,92 @@
                 alert('Неверный пароль!');
             }
         });
+        const dataTable = document.getElementById('data-table');
+
+        loginButton.addEventListener('click', function() {
+            loginButton.classList.add('hidden');
+            logoutButton.classList.remove('hidden');
+            dataTable.contentEditable = "true"; // Делаем таблицу редактируемой
+        });
+
+        logoutButton.addEventListener('click', function() {
+            loginButton.classList.remove('hidden');
+            logoutButton.classList.add('hidden');
+            dataTable.contentEditable = "false"; // Отключаем редактирование
+        });
+
+        // Обработчик для кнопок "Сохранить"
+        const editButtons = document.querySelectorAll('.edit-button');
+        editButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const row = this.parentElement.parentElement; // Получаем строку
+                const cells = row.querySelectorAll('td');
+
+                // Здесь можно добавить код для сохранения данных, например отправка на сервер
+                alert('Данные сохранены: ' + Array.from(cells).map(cell => cell.innerText).join(', '));
+            });
+        });
+
+        // Обработчик для добавления новых элементов
+        const addButton = document.getElementById('add-button');
+        addButton.addEventListener('click', function() {
+            const newRow = document.createElement('tr'); // Создаем новую строку
+            const classInput = document.getElementById('class-input').value;
+            const totalInput = document.getElementById('total-input').value;
+            const absencesInput = document.getElementById('absences-input').value;
+            const other1Input = document.getElementById('other1-input').value;
+            const other2Input = document.getElementById('other2-input').value;
+            const other3Input = document.getElementById('other3-input').value;
+            const other4Input = document.getElementById('other4-input').value;
+            const other5Input = document.getElementById('other5-input').value;
+            const percentInput = document.getElementById('percent-input').value;
+
+            // Проверка на пустые поля
+            if (!classInput || !totalInput || !absencesInput || !percentInput) {
+                alert('Пожалуйста, заполните все обязательные поля!');
+                return;
+            }
+
+            newRow.innerHTML = `
+            <td contenteditable="true">${classInput}</td>
+            <td contenteditable="true">${totalInput}</td>
+            <td contenteditable="true">${absencesInput}</td>
+            <td contenteditable="true">${other1Input}</td>
+            <td contenteditable="true">${other2Input}</td>
+            <td contenteditable="true">${other3Input}</td>
+            <td contenteditable="true">${other4Input}</td>
+            <td contenteditable="true">${other5Input}</td>
+            <td contenteditable="true">${percentInput}</td>
+            <td><button class="edit-button">Сохранить</button></td>
+        `;
+
+            document.querySelector('#data-table tbody').appendChild(newRow); // Добавляем новую строку в таблицу
+            document.getElementById('class-input').value = ''; // Очищаем поля ввода
+            document.getElementById('total-input').value = '';
+            document.getElementById('absences-input').value = '';
+            document.getElementById('other1-input').value = '';
+            document.getElementById('other2-input').value = '';
+            document.getElementById('other3-input').value = '';
+            document.getElementById('other4-input').value = '';
+            document.getElementById('other5-input').value = '';
+            document.getElementById('percent-input').value = '';
+
+            // Добавляем обработчик на новую кнопку "Сохранить"
+            const newEditButton = newRow.querySelector('.edit-button');
+            newEditButton.addEventListener('click', function() {
+                const cells = newRow.querySelectorAll('td');
+
+                alert('Данные сохранены: ' + Array.from(cells).map(cell => cell.innerText).join(', '));
+            });
+        });
+
+        // Обработчик кнопки сохранения изменений
+        saveEditButton.addEventListener('click', saveEdit);
 
         // Начальная отрисовка таблицы
         renderTable();
     </script>
+
 </body>
 
 </html>
-
