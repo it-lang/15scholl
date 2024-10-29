@@ -1,645 +1,235 @@
 <!DOCTYPE html>
-<html lang="kz">
+<html lang="kk">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Жанар Ахметова: 2-11 сыныптардың білім сапасы</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #e9f5ff;
-            /* Светлый фон */
-            line-height: 1.6;
-            color: #333;
-        }
-        
-        header {
-            background-color: #007bff;
-            /* Основной цвет */
-            color: white;
-            text-align: center;
-            padding: 30px 0;
-            /* Увеличенный верхний и нижний отступ */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            /* Тень */
-        }
-        
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-            font-weight: 600;
-            /* Увеличенный вес шрифта */
-        }
-        
-        h2 {
-            margin: 30px 0;
-            font-size: 1.8em;
-            text-align: center;
-            color: #007bff;
-            /* Цвет заголовков */
-            border-bottom: 2px solid #007bff;
-            /* Подчеркивание */
-            padding-bottom: 10px;
-            /* Отступ снизу */
-        }
-        
-        nav {
-            text-align: center;
-            margin: 20px 0;
-        }
-        
-        nav a {
-            color: #007bff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            transition: color 0.3s ease;
-            /* Плавный переход цвета */
-        }
-        
-        nav a:hover {
-            color: #0056b3;
-            /* Цвет при наведении */
-            text-decoration: underline;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background-color: white;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            /* Увеличенная тень */
-            border-radius: 10px;
-            /* Скругленные углы */
-            overflow: hidden;
-            /* Убираем перекрытие */
-            transition: transform 0.3s;
-            /* Плавный переход для эффекта */
-        }
-        
-        th,
-        td {
-            padding: 15px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        th {
-            background-color: #007bff;
-            /* Цвет заголовка таблицы */
-            color: white;
-            font-weight: 600;
-            /* Увеличенный вес шрифта для заголовков */
-        }
-        
-        tr:hover {
-            background-color: #f1f1f1;
-            /* Цвет при наведении на строку */
-            transform: scale(1.01);
-            /* Эффект увеличения при наведении */
-        }
-        
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            /* Увеличенные отступы */
-            background-color: #007bff;
-            /* Цвет нижнего колонтитула */
-            color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-            /* Тень для нижнего колонтитула */
-        }
-        
-        @media (max-width: 600px) {
-            body {
-                padding: 0 10px;
-            }
-            h1 {
-                font-size: 2em;
-            }
-            h2 {
-                font-size: 1.5em;
-            }
-            nav a {
-                margin: 0 10px;
-                /* Уменьшенные отступы для мобильных */
-            }
-        }
-    </style>
+    <title>Білім Сапасы</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    
+    header {
+        background-color: #007BFF;
+        color: white;
+        text-align: center;
+        padding: 1em 0;
+    }
+    
+    main {
+        padding: 20px;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    
+    th {
+        background-color: #007BFF;
+        color: white;
+    }
+    
+    .admin-panel {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+    }
+    
+    .admin-panel input {
+        margin: 5px;
+        padding: 10px;
+        width: calc(14.2857% - 22px);
+    }
+    
+    .admin-panel button {
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+    }
+    
+    .admin-panel button:hover {
+        background-color: #0056b3;
+    }
+    
+    .auth-panel {
+        margin-bottom: 20px;
+    }
+    
+    .auth-panel input {
+        padding: 10px;
+        margin-right: 10px;
+    }
+    
+    footer {
+        text-align: center;
+        padding: 1em 0;
+        background-color: #007BFF;
+        color: white;
+    }
+</style>
 
 <body>
     <header>
-        <h1> 2-11 сыныптардың білім сапасы</h1>
+        <h1>Жанар Ахметова: 2-11 сыныптардың білім сапасы</h1>
     </header>
 
-    <nav>
-        <a href="#table">Деректер</a>
-        <a href="#about">Туралы</a>
-        <a href="#contact">Байланыс</a>
-    </nav>
+    <main>
+        <div class="auth-panel">
+            <input type="password" id="admin-password" placeholder="Пароль администратора">
+            <button id="login-button">Кіру</button>
+            <button id="logout-button" style="display: none;">Шығу</button>
+        </div>
 
-    <h2 id="table">Білім сапасын өткен жылмен салыстыру</h2>
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>Сынып</th>
+                    <th>Барлығы</th>
+                    <th>Оқу озаттары</th>
+                    <th>Оқу екпінділері</th>
+                    <th>Үшке оқитындар</th>
+                    <th>Үлгермейтіндер</th>
+                    <th>Аттестациядан өтпегендер</th>
+                    <th>Білім сапасының %</th>
+                    <th>Әрекет</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Данные будут добавлены через JavaScript -->
+            </tbody>
+        </table>
 
-    <table>
-        <thead>
-            <tr>
-                <th onclick="sortTable(0)">Сынып <i class="fas fa-sort"></i></th>
-                <th onclick="sortTable(1)">Барлығы <i class="fas fa-sort"></i></th>
-                <th onclick="sortTable(2)">Оқу озаттары <i class="fas fa-sort"></i></th>
-                <th onclick="sortTable(3)">Оқу екпінділері <i class="fas fa-sort"></i></th>
-                <th onclick="sortTable(4)">Үшке оқитындар <i class="fas fa-sort"></i></th>
-                <th onclick="sortTable(5)">Үлгермейтіндер <i class="fas fa-sort"></i></th>
-                <th onclick="sortTable(6)">Аттестациядан өтпеген <i class="fas fa-sort"></i></th>
-                <th onclick="sortTable(7)">Соның ішінде <i class="fas fa-sort"></i></th>
-                <th onclick="sortTable(8)">Білім сапасының % <i class="fas fa-sort"></i></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>2а</td>
-                <td>19</td>
-                <td>6</td>
-                <td>4</td>
-                <td>9</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>52.63</td>
-            </tr>
-            <tr>
-                <td>2ә</td>
-                <td>22</td>
-                <td>7</td>
-                <td>8</td>
-                <td>7</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>68.18</td>
-            </tr>
-            <tr>
-                <td>2б</td>
-                <td>20</td>
-                <td>4</td>
-                <td>9</td>
-                <td>7</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>65</td>
-            </tr>
-            <tr>
-                <td>3а</td>
-                <td>27</td>
-                <td>6</td>
-                <td>12</td>
-                <td>9</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>66.67</td>
-            </tr>
-            <tr>
-                <td>3ә</td>
-                <td>24</td>
-                <td>4</td>
-                <td>11</td>
-                <td>9</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>62.5</td>
-            </tr>
-            <tr>
-                <td>3б</td>
-                <td>27</td>
-                <td>3</td>
-                <td>15</td>
-                <td>9</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>66.67</td>
-            </tr>
-            <tr>
-                <td>3 Сыныптар</td>
-                <td>78</td>
-                <td>13</td>
-                <td>38</td>
-                <td>27</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>65.38</td>
-            </tr>
-            <tr>
-                <td>4а</td>
-                <td>24</td>
-                <td>3</td>
-                <td>12</td>
-                <td>9</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>62.5</td>
-            </tr>
-            <tr>
-                <td>4ә</td>
-                <td>25</td>
-                <td>4</td>
-                <td>10</td>
-                <td>11</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>56</td>
-            </tr>
-            <tr>
-                <td>4б</td>
-                <td>24</td>
-                <td>4</td>
-                <td>12</td>
-                <td>8</td>
-                <td>0</td>
-                <td>0</td>
-                <td>1</td>
-                <td>66.67</td>
-            </tr>
-            <tr>
-                <td>4 Сыныптар</td>
-                <td>73</td>
-                <td>11</td>
-                <td>34</td>
-                <td>28</td>
-                <td>0</td>
-                <td>0</td>
-                <td>1</td>
-                <td>61.64</td>
-            </tr>
-            <tr>
-                <td>1 – 4 Сыныптар</td>
-                <td>212</td>
-                <td>41</td>
-                <td>93</td>
-                <td>78</td>
-                <td>0</td>
-                <td>0</td>
-                <td>1</td>
-                <td>63.21</td>
-            </tr>
-            <tr>
-                <td>5а</td>
-                <td>25</td>
-                <td>0</td>
-                <td>10</td>
-                <td>15</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>40</td>
-            </tr>
-            <tr>
-                <td>5ә</td>
-                <td>23</td>
-                <td>2</td>
-                <td>9</td>
-                <td>12</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>47.83</td>
-            </tr>
-            <tr>
-                <td>5б</td>
-                <td>25</td>
-                <td>3</td>
-                <td>14</td>
-                <td>8</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>68</td>
-            </tr>
-            <tr>
-                <td>5 Сыныптар</td>
-                <td>73</td>
-                <td>5</td>
-                <td>33</td>
-                <td>35</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>52.05</td>
-            </tr>
-            <tr>
-                <td>6а</td>
-                <td>22</td>
-                <td>2</td>
-                <td>11</td>
-                <td>9</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>59.09</td>
-            </tr>
-            <tr>
-                <td>6ә</td>
-                <td>21</td>
-                <td>3</td>
-                <td>9</td>
-                <td>9</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>57.14</td>
-            </tr>
-            <tr>
-                <td>6б</td>
-                <td>19</td>
-                <td>2</td>
-                <td>6</td>
-                <td>11</td>
-                <td>0</td>
-                <td>0</td>
-                <td>1</td>
-                <td>42.11</td>
-            </tr>
-            <tr>
-                <td>6 Сыныптар</td>
-                <td>62</td>
-                <td>7</td>
-                <td>26</td>
-                <td>29</td>
-                <td>0</td>
-                <td>0</td>
-                <td>1</td>
-                <td>53.23</td>
-            </tr>
-            <tr>
-                <td>7а</td>
-                <td>24</td>
-                <td>0</td>
-                <td>13</td>
-                <td>11</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>54.17</td>
-            </tr>
-            <tr>
-                <td>7ә</td>
-                <td>25</td>
-                <td>1</td>
-                <td>13</td>
-                <td>11</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>56</td>
-            </tr>
-            <tr>
-                <td>7б</td>
-                <td>25</td>
-                <td>3</td>
-                <td>13</td>
-                <td>9</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>64</td>
-            </tr>
-            <tr>
-                <td>7 Сыныптар</td>
-                <td>74</td>
-                <td>4</td>
-                <td>39</td>
-                <td>31</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>58.11</td>
-            </tr>
-            <tr>
-                <td>8а</td>
-                <td>24</td>
-                <td>2</td>
-                <td>11</td>
-                <td>11</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>54.17</td>
-            </tr>
-            <tr>
-                <td>8ә</td>
-                <td>18</td>
-                <td>0</td>
-                <td>8</td>
-                <td>10</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>44.44</td>
-            </tr>
-            <tr>
-                <td>8б</td>
-                <td>23</td>
-                <td>2</td>
-                <td>11</td>
-                <td>10</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>56.52</td>
-            </tr>
-            <tr>
-                <td>8 Сыныптар</td>
-                <td>65</td>
-                <td>4</td>
-                <td>30</td>
-                <td>31</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>52.31</td>
-            </tr>
-            <tr>
-                <td>9а</td>
-                <td>25</td>
-                <td>3</td>
-                <td>10</td>
-                <td>12</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>52</td>
-            </tr>
-            <tr>
-                <td>9ә</td>
-                <td>25</td>
-                <td>0</td>
-                <td>8</td>
-                <td>17</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>32</td>
-            </tr>
-            <tr>
-                <td>9 Сыныптар</td>
-                <td>50</td>
-                <td>3</td>
-                <td>18</td>
-                <td>29</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>42</td>
-            </tr>
-            <tr>
-                <td>5 – 9 Сыныптар</td>
-                <td>324</td>
-                <td>23</td>
-                <td>146</td>
-                <td>155</td>
-                <td>0</td>
-                <td>0</td>
-                <td>1</td>
-                <td>52.16</td>
-            </tr>
-            <tr>
-                <td>10а</td>
-                <td>24</td>
-                <td>1</td>
-                <td>11</td>
-                <td>12</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>50</td>
-            </tr>
-            <tr>
-                <td>10ә</td>
-                <td>23</td>
-                <td>2</td>
-                <td>9</td>
-                <td>12</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>60.87</td>
-            </tr>
-            <tr>
-                <td>10б</td>
-                <td>25</td>
-                <td>2</td>
-                <td>11</td>
-                <td>12</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>52</td>
-            </tr>
-            <tr>
-                <td>10 Сыныптар</td>
-                <td>72</td>
-                <td>5</td>
-                <td>31</td>
-                <td>36</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>53.57</td>
-            </tr>
-            <tr>
-                <td>11а</td>
-                <td>25</td>
-                <td>1</td>
-                <td>12</td>
-                <td>12</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>50</td>
-            </tr>
-            <tr>
-                <td>11ә</td>
-                <td>23</td>
-                <td>3</td>
-                <td>9</td>
-                <td>11</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>56.52</td>
-            </tr>
-            <tr>
-                <td>11б</td>
-                <td>25</td>
-                <td>3</td>
-                <td>12</td>
-                <td>10</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>60</td>
-            </tr>
-            <tr>
-                <td>11 Сыныптар</td>
-                <td>73</td>
-                <td>7</td>
-                <td>33</td>
-                <td>33</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>58.90</td>
-            </tr>
-            <tr>
-                <td>2 – 11 Сыныптар</td>
-                <td>459</td>
-                <td>51</td>
-                <td>192</td>
-                <td>203</td>
-                <td>0</td>
-                <td>0</td>
-                <td>1</td>
-                <td>55.60</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="admin-panel" style="display: none;">
+            <h2>Әкімшілік панелі</h2>
+            <input type="text" id="class" placeholder="Сынып">
+            <input type="number" id="total" placeholder="Барлығы">
+            <input type="number" id="excellent" placeholder="Оқу озаттары">
+            <input type="number" id="active" placeholder="Оқу екпінділері">
+            <input type="number" id="three" placeholder="Үшке оқитындар">
+            <input type="number" id="failing" placeholder="Үлгермейтіндер">
+            <input type="number" id="not_passed" placeholder="Аттестациядан өтпегендер">
+            <input type="number" id="quality" placeholder="Білім сапасының %" step="0.01">
+            <button id="add-button">Қосу</button>
+        </div>
+    </main>
 
     <footer>
-        <p>© 2024 Барлық құқықтар қорғалған.</p>
+        <p>&copy; 2024 Білім Сапасы</p>
     </footer>
 
     <script>
-        function sortTable(columnIndex) {
-            const table = document.querySelector("table");
-            const rows = Array.from(table.rows).slice(1);
-            const isAscending = rows[0].cells[columnIndex].textContent > rows[1].cells[columnIndex].textContent;
+        const dataTable = document.getElementById('data-table').getElementsByTagName('tbody')[0];
+        const addButton = document.getElementById('add-button');
+        const loginButton = document.getElementById('login-button');
+        const logoutButton = document.getElementById('logout-button');
+        const adminPanel = document.querySelector('.admin-panel');
+        const authPanel = document.querySelector('.auth-panel');
+        const adminPasswordInput = document.getElementById('admin-password');
 
-            rows.sort((a, b) => {
-                const aText = a.cells[columnIndex].textContent;
-                const bText = b.cells[columnIndex].textContent;
+        // Шаблон данных
+        let data = JSON.parse(localStorage.getItem('educationData')) || [{
+                class: '2а',
+                total: 19,
+                excellent: 6,
+                active: 4,
+                three: 9,
+                failing: 0,
+                not_passed: 0,
+                quality: 52.63
+            }, {
+                class: '2ә',
+                total: 22,
+                excellent: 7,
+                active: 8,
+                three: 7,
+                failing: 0,
+                not_passed: 0,
+                quality: 68.18
+            },
+            // Добавьте больше данных...
+        ];
 
-                if (!isNaN(aText) && !isNaN(bText)) {
-                    return isAscending ? aText - bText : bText - aText;
-                }
-                return isAscending ? aText.localeCompare(bText) : bText.localeCompare(aText);
+        // Рендеринг таблицы
+        function renderTable() {
+            dataTable.innerHTML = '';
+            data.forEach((row, index) => {
+                const newRow = dataTable.insertRow();
+                Object.values(row).forEach((text) => {
+                    const newCell = newRow.insertCell();
+                    newCell.textContent = text;
+                });
+                const actionCell = newRow.insertCell();
+                actionCell.innerHTML = `<button onclick="deleteRow(${index})">Жою</button>`;
             });
-
-            rows.forEach(row => table.appendChild(row));
         }
+
+        // Добавление новой строки
+        function addRow() {
+            const newRow = {
+                class: document.getElementById('class').value,
+                total: parseInt(document.getElementById('total').value),
+                excellent: parseInt(document.getElementById('excellent').value),
+                active: parseInt(document.getElementById('active').value),
+                three: parseInt(document.getElementById('three').value),
+                failing: parseInt(document.getElementById('failing').value),
+                not_passed: parseInt(document.getElementById('not_passed').value),
+                quality: parseFloat(document.getElementById('quality').value),
+            };
+
+            data.push(newRow);
+            localStorage.setItem('educationData', JSON.stringify(data)); // Сохранение данных в localStorage
+            renderTable();
+        }
+
+        // Удаление строки
+        function deleteRow(index) {
+            data.splice(index, 1);
+            localStorage.setItem('educationData', JSON.stringify(data)); // Сохранение данных в localStorage
+            renderTable();
+        }
+
+        // Аутентификация администратора
+        loginButton.addEventListener('click', () => {
+            const password = adminPasswordInput.value;
+            if (password === 'admin') {
+                adminPanel.style.display = 'block';
+                loginButton.style.display = 'none';
+                logoutButton.style.display = 'block';
+                renderTable();
+            } else {
+                alert('Неверный пароль!');
+            }
+        });
+
+        // Выход из админ-панели
+        logoutButton.addEventListener('click', () => {
+            adminPanel.style.display = 'none';
+            loginButton.style.display = 'inline-block';
+            logoutButton.style.display = 'none';
+            adminPasswordInput.value = ''; // Сброс пароля
+        });
+
+        // Событие добавления строки
+        addButton.addEventListener('click', addRow);
+        renderTable();
     </script>
 </body>
 
