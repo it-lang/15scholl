@@ -4,136 +4,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Білім Сапасы</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Білім сапасы</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin: 0;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4a90e2;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .auth-panel {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .admin-panel {
+            display: none;
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4a90e2;
+            color: white;
+            cursor: pointer;
+        }
+
+        th:hover {
+            background-color: #357ab8;
+        }
+
+        td {
+            transition: background-color 0.3s;
+        }
+
+        td:hover {
+            background-color: #f1f1f1;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="password"] {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: calc(100% - 22px);
+        }
+
+        button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px 0;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #357ab8;
+        }
+
+        #search-input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
 </head>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
-    }
-    
-    header {
-        background-color: #007BFF;
-        color: white;
-        text-align: center;
-        padding: 1em 0;
-    }
-    
-    main {
-        padding: 20px;
-    }
-    
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-    }
-    
-    th,
-    td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: center;
-    }
-    
-    th {
-        background-color: #007BFF;
-        color: white;
-    }
-    
-    .admin-panel {
-        margin-top: 20px;
-        padding: 20px;
-        background-color: #fff;
-        border: 1px solid #ddd;
-    }
-    
-    .admin-panel input {
-        margin: 5px;
-        padding: 10px;
-        width: calc(14.2857% - 22px);
-    }
-    
-    .admin-panel button {
-        background-color: #007BFF;
-        color: white;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-    }
-    
-    .admin-panel button:hover {
-        background-color: #0056b3;
-    }
-    
-    .auth-panel {
-        margin-bottom: 20px;
-    }
-    
-    .auth-panel input {
-        padding: 10px;
-        margin-right: 10px;
-    }
-    
-    footer {
-        text-align: center;
-        padding: 1em 0;
-        background-color: #007BFF;
-        color: white;
-    }
-</style>
 
 <body>
-    <header>
-        <h1>Жанар Ахметова: 2-11 сыныптардың білім сапасы</h1>
-    </header>
+    <h1>Жанар Ахметова: 2-11 сыныптардың білім сапасы</h1>
 
-    <main>
-        <div class="auth-panel">
-            <input type="password" id="admin-password" placeholder="Пароль администратора">
-            <button id="login-button">Кіру</button>
-            <button id="logout-button" style="display: none;">Шығу</button>
-        </div>
+    <div class="auth-panel">
+        <input type="password" id="admin-password" placeholder="Пароль администратора">
+        <button id="login-button">Кіру</button>
+        <button id="logout-button" style="display:none;">Шығу</button>
+    </div>
 
-        <table id="data-table">
-            <thead>
-                <tr>
-                    <th>Сынып</th>
-                    <th>Барлығы</th>
-                    <th>Оқу озаттары</th>
-                    <th>Оқу екпінділері</th>
-                    <th>Үшке оқитындар</th>
-                    <th>Үлгермейтіндер</th>
-                    <th>Аттестациядан өтпегендер</th>
-                    <th>Білім сапасының %</th>
-                    <th>Әрекет</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Данные будут добавлены через JavaScript -->
-            </tbody>
-        </table>
-
-        <div class="admin-panel" style="display: none;">
-            <h2>Әкімшілік панелі</h2>
-            <input type="text" id="class" placeholder="Сынып">
-            <input type="number" id="total" placeholder="Барлығы">
-            <input type="number" id="excellent" placeholder="Оқу озаттары">
-            <input type="number" id="active" placeholder="Оқу екпінділері">
-            <input type="number" id="three" placeholder="Үшке оқитындар">
-            <input type="number" id="failing" placeholder="Үлгермейтіндер">
-            <input type="number" id="not_passed" placeholder="Аттестациядан өтпегендер">
-            <input type="number" id="quality" placeholder="Білім сапасының %" step="0.01">
+    <div class="admin-panel">
+        <h2>Қосымша ақпарат енгізу</h2>
+        <div class="button-group">
+            <input type="text" id="class" placeholder="Сынып" required>
+            <input type="number" id="total" placeholder="Барлығы" required>
+            <input type="number" id="excellent" placeholder="Оқу озаттары" required>
+            <input type="number" id="active" placeholder="Оқу екпінділері" required>
+            <input type="number" id="three" placeholder="Үшке оқитындар" required>
+            <input type="number" id="failing" placeholder="Үлгермейтіндер" required>
+            <input type="number" id="not_passed" placeholder="Аттестациядан өтпегендер" required>
+            <input type="number" id="quality" placeholder="Білім сапасы %" required>
             <button id="add-button">Қосу</button>
+            <button id="reset-button">Деректерді қалпына келтіру</button>
+            <button id="report-button">Есеп беру</button>
+            <button id="export-button">CSV форматына экспорттау</button>
+            <button id="clear-filter-button">Фильтрді тазарту</button>
         </div>
-    </main>
+    </div>
 
-    <footer>
-        <p>&copy; 2024 Білім Сапасы</p>
-    </footer>
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th onclick="sortTable('class')">Сынып</th>
+                <th onclick="sortTable('total')">Барлығы</th>
+                <th onclick="sortTable('excellent')">Оқу озаттары</th>
+                <th onclick="sortTable('active')">Оқу екпінділері</th>
+                <th onclick="sortTable('three')">Үшке оқитындар</th>
+                <th onclick="sortTable('failing')">Үлгермейтіндер</th>
+                <th onclick="sortTable('not_passed')">Аттестациядан өтпегендер</th>
+                <th onclick="sortTable('quality')">Білім сапасы %</th>
+                <th>Әрекет</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <input type="text" id="search-input" placeholder="Сынып іздеу">
 
     <script>
         const dataTable = document.getElementById('data-table').getElementsByTagName('tbody')[0];
@@ -141,29 +167,17 @@
         const loginButton = document.getElementById('login-button');
         const logoutButton = document.getElementById('logout-button');
         const adminPanel = document.querySelector('.admin-panel');
-        const authPanel = document.querySelector('.auth-panel');
         const adminPasswordInput = document.getElementById('admin-password');
+        const searchInput = document.getElementById('search-input');
+        const resetButton = document.getElementById('reset-button');
+        const reportButton = document.getElementById('report-button');
+        const exportButton = document.getElementById('export-button');
+        const clearFilterButton = document.getElementById('clear-filter-button');
 
-        // Шаблон данных
-        let data = JSON.parse(localStorage.getItem('educationData')) || [{
-                class: '2а',
-                total: 19,
-                excellent: 6,
-                active: 4,
-                three: 9,
-                failing: 0,
-                not_passed: 0,
-                quality: 52.63
-            }, {
-                class: '2ә',
-                total: 22,
-                excellent: 7,
-                active: 8,
-                three: 7,
-                failing: 0,
-                not_passed: 0,
-                quality: 68.18
-            },
+        // Шаблон данных, загружаемый из localStorage или инициализируемый значениями по умолчанию
+        let data = JSON.parse(localStorage.getItem('educationData')) || [
+            { class: '2а', total: 19, excellent: 6, active: 4, three: 9, failing: 0, not_passed: 0, quality: 52.63 },
+            { class: '2ә', total: 22, excellent: 7, active: 8, three: 7, failing: 0, not_passed: 0, quality: 68.18 },
             // Добавьте больше данных...
         ];
 
@@ -177,7 +191,9 @@
                     newCell.textContent = text;
                 });
                 const actionCell = newRow.insertCell();
-                actionCell.innerHTML = `<button onclick="deleteRow(${index})">Жою</button>`;
+                actionCell.innerHTML = `
+                    <button onclick="editRow(${index})">Редактировать</button>
+                    <button onclick="deleteRow(${index})">Жою</button>`;
             });
         }
 
@@ -194,17 +210,126 @@
                 quality: parseFloat(document.getElementById('quality').value),
             };
 
-            data.push(newRow);
-            localStorage.setItem('educationData', JSON.stringify(data)); // Сохранение данных в localStorage
-            renderTable();
+            if (validateRow(newRow)) {
+                data.push(newRow);
+                saveData(); // Сохраняем данные
+                renderTable();
+                clearInputs(); // Очищаем поля ввода после добавления
+            } else {
+                alert('Некоторые поля неверны. Проверьте ввод!');
+            }
         }
 
         // Удаление строки
         function deleteRow(index) {
             data.splice(index, 1);
-            localStorage.setItem('educationData', JSON.stringify(data)); // Сохранение данных в localStorage
+            saveData(); // Сохраняем данные
             renderTable();
         }
+
+        // Редактирование строки
+        function editRow(index) {
+            const row = data[index];
+            document.getElementById('class').value = row.class;
+            document.getElementById('total').value = row.total;
+            document.getElementById('excellent').value = row.excellent;
+            document.getElementById('active').value = row.active;
+            document.getElementById('three').value = row.three;
+            document.getElementById('failing').value = row.failing;
+            document.getElementById('not_passed').value = row.not_passed;
+            document.getElementById('quality').value = row.quality;
+
+            // Удаляем строку после редактирования
+            deleteRow(index);
+        }
+
+        // Валидация данных
+        function validateRow(row) {
+            return row.class && row.total >= 0 && row.excellent >= 0 && row.active >= 0 &&
+                row.three >= 0 && row.failing >= 0 && row.not_passed >= 0 && row.quality >= 0;
+        }
+
+        // Очищаем поля ввода после добавления
+        function clearInputs() {
+            document.getElementById('class').value = '';
+            document.getElementById('total').value = '';
+            document.getElementById('excellent').value = '';
+            document.getElementById('active').value = '';
+            document.getElementById('three').value = '';
+            document.getElementById('failing').value = '';
+            document.getElementById('not_passed').value = '';
+            document.getElementById('quality').value = '';
+        }
+
+        // Сохранение данных в localStorage
+        function saveData() {
+            localStorage.setItem('educationData', JSON.stringify(data));
+        }
+
+        // Генерация отчета о качестве образования
+        reportButton.addEventListener('click', () => {
+            let report = "Отчет о качестве образования:\n\n";
+            data.forEach(row => {
+                report += `Класс: ${row.class}, Качество: ${row.quality}%\n`;
+            });
+            alert(report);
+        });
+
+        // Экспорт данных в CSV
+        exportButton.addEventListener('click', () => {
+            const csvRows = [];
+            const headers = Object.keys(data[0]);
+            csvRows.push(headers.join(','));
+
+            for (const row of data) {
+                csvRows.push(Object.values(row).join(','));
+            }
+
+            const csvString = csvRows.join('\n');
+            const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('href', url);
+            a.setAttribute('download', 'education_data.csv');
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+
+        // Очистка фильтра поиска
+        clearFilterButton.addEventListener('click', () => {
+            searchInput.value = '';
+            renderTable();
+        });
+
+        // Фильтрация таблицы по классу
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            const filteredData = data.filter(row => row.class.toLowerCase().includes(searchTerm));
+            dataTable.innerHTML = '';
+            filteredData.forEach((row, index) => {
+                const newRow = dataTable.insertRow();
+                Object.values(row).forEach((text) => {
+                    const newCell = newRow.insertCell();
+                    newCell.textContent = text;
+                });
+                const actionCell = newRow.insertCell();
+                actionCell.innerHTML = `
+                    <button onclick="editRow(${index})">Редактировать</button>
+                    <button onclick="deleteRow(${index})">Жою</button>`;
+            });
+        });
+
+        // Событие добавления строки
+        addButton.addEventListener('click', addRow);
+
+        // Выход из админ-панели
+        logoutButton.addEventListener('click', () => {
+            adminPanel.style.display = 'none';
+            loginButton.style.display = 'inline-block';
+            logoutButton.style.display = 'none';
+            adminPasswordInput.value = ''; // Сброс пароля
+        });
 
         // Аутентификация администратора
         loginButton.addEventListener('click', () => {
@@ -219,18 +344,10 @@
             }
         });
 
-        // Выход из админ-панели
-        logoutButton.addEventListener('click', () => {
-            adminPanel.style.display = 'none';
-            loginButton.style.display = 'inline-block';
-            logoutButton.style.display = 'none';
-            adminPasswordInput.value = ''; // Сброс пароля
-        });
-
-        // Событие добавления строки
-        addButton.addEventListener('click', addRow);
+        // Начальная отрисовка таблицы
         renderTable();
     </script>
 </body>
 
 </html>
+
